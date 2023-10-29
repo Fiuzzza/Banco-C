@@ -4,11 +4,11 @@
 #include "cliente.h"
 
 int main() {
-    struct Cliente clientes[100]; // Defina o tamanho máximo do array de clientes, se necessário.
-    int numClientes = 0;
+    struct Cliente clientes[100]; // Declaração de um array de clientes com um máximo de 100 clientes.
+    int numClientes = 0; // Inicializa o contador de clientes.
 
     int opcao;
-    while (1) {
+    while (1) { // Loop principal do programa.
         printf("==== (¬‿¬) QuemPoupaTem Bank (¬‿¬) ====\n");
         printf("1. Novo Cliente\n");
         printf("2. Apagar Cliente\n");
@@ -48,7 +48,7 @@ int main() {
                 operacao_poupanca(clientes, numClientes);
                 break;
             case 9:
-                return 0;
+                return 0; // Sai do programa.
             default:
                 printf("Opção inválida, tente novamente.\n");
                 break;
