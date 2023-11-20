@@ -2,7 +2,32 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include "cliente.h"  // Inclui o cabeçalho do arquivo "cliente.h" para ter acesso à definição da estrutura Cliente.
+#include "cliente.h" 
+
+// Função para salvar os dados dos clientes.
+void salvar_dados(struct Cliente *clientes, int numClientes) {
+    FILE *arquivo = fopen("clientes.dat", "wb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para salvar dados.\n");
+        return;
+    }
+
+    fwrite(clientes, sizeof(struct Cliente), numClientes, arquivo);
+    fclose(arquivo);
+}
+
+// Função para carregar os dados dos clientes.
+void carregar_dados(struct Cliente *clientes, int *numClientes) {
+    FILE *arquivo = fopen("clientes.dat", "rb");
+    if (arquivo == NULL) {
+        printf("Arquivo de dados não encontrado. Criando arquivo inicial.\n");
+        inicializar_dados(clientes, numClientes);
+        return;
+    }
+
+    fread(clientes, sizeof(struct Cliente), 100, arquivo);
+    fclose(arquivo);
+}
 
 // Função para adicionar um novo cliente ao vetor de clientes.
 void novo_cliente(struct Cliente *clientes, int *numClientes) {
