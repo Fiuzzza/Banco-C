@@ -6,6 +6,7 @@
 int main() {
     struct Cliente clientes[100]; // Declaração de um array de clientes com um máximo de 100 clientes.
     int numClientes = 0; // Inicializa o contador de clientes.
+    carregar_dados(clientes, &numClientes);
 
     int opcao;
     while (1) { // Loop principal do programa.
@@ -48,6 +49,7 @@ int main() {
                 operacao_poupanca(clientes, numClientes);
                 break;
             case 9:
+                salvar_dados(clientes, numClientes);
                 return 0; // Sai do programa.
             default:
                 printf("Opção inválida, tente novamente.\n");
